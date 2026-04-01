@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#F8FAFC"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_gravity="center"
+            android:src="@drawable/bien_w208"
+            android:layout_marginTop="10dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Giao nhau với đường ưu tiên"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="#0F172A"
+            android:gravity="center"
+            android:layout_marginTop="18dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Biển báo nguy hiểm - W.208"
+            android:textColor="#22C1E8"
+            android:textStyle="bold"
+            android:textSize="15sp"
+            android:layout_gravity="center"
+            android:layout_marginTop="8dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ý nghĩa"
+            android:textStyle="bold"
+            android:textColor="#0F172A"
+            android:textSize="18sp"
+            android:layout_marginTop="26dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Biển báo này dùng để báo trước sắp tới nơi giao nhau với đường ưu tiên. Người tham gia giao thông cần chú ý quan sát và giảm tốc độ."
+            android:textColor="#64748B"
+            android:textSize="15sp"
+            android:lineSpacingExtra="4dp"
+            android:layout_marginTop="10dp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnQuizSign"
+            android:layout_width="match_parent"
+            android:layout_height="58dp"
+            android:layout_marginTop="26dp"
+            android:text="Làm quiz về biển này"
+            android:textAllCaps="false"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:backgroundTint="#22C1E8"
+            app:cornerRadius="29dp" />
+    </LinearLayout>
+</ScrollView>
