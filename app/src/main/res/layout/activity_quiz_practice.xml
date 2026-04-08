@@ -3,14 +3,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF">
+    android:background="#F8FAFC">
 
     <!-- Header -->
     <RelativeLayout
         android:id="@+id/header"
         android:layout_width="match_parent"
         android:layout_height="64dp"
-        android:background="#FFFFFF">
+        android:background="#FFFFFF"
+        android:elevation="1dp">
 
         <ImageView
             android:id="@+id/btnBack"
@@ -20,16 +21,20 @@
             android:layout_marginStart="8dp"
             android:padding="12dp"
             android:src="@android:drawable/ic_menu_revert"
-            app:tint="#0F172A" />
+            app:tint="#0F172A"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:clickable="true"
+            android:focusable="true"
+            android:contentDescription="Quay lại" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
+            android:fontFamily="sans-serif-black"
             android:text="Luyện tập Quiz"
             android:textColor="#0F172A"
-            android:textSize="20sp"
-            android:textStyle="bold" />
+            android:textSize="20sp" />
     </RelativeLayout>
 
     <!-- Tabs -->
@@ -42,38 +47,53 @@
         android:orientation="horizontal">
 
         <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Luyện theo chủ đề"
-                android:textColor="#64748B"
-                android:textSize="15sp"
-                android:textStyle="bold" />
-        </LinearLayout>
-
-        <LinearLayout
+            android:id="@+id/tabTopic"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:clickable="true"
+            android:focusable="true">
             <TextView
+                android:id="@+id/tvTabTopic"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Luyện theo độ khó"
+                android:text="Luyện theo chủ đề"
                 android:textColor="#22C1E8"
                 android:textSize="15sp"
                 android:textStyle="bold" />
             <View
+                android:id="@+id/indicatorTopic"
                 android:layout_width="match_parent"
                 android:layout_height="3dp"
                 android:layout_marginTop="8dp"
                 android:background="#22C1E8" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/tabExam"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:clickable="true"
+            android:focusable="true">
+            <TextView
+                android:id="@+id/tvTabExam"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Đề thi thật"
+                android:textColor="#64748B"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+            <View
+                android:id="@+id/indicatorExam"
+                android:layout_width="match_parent"
+                android:layout_height="3dp"
+                android:layout_marginTop="8dp"
+                android:background="@android:color/transparent" />
         </LinearLayout>
     </LinearLayout>
 
@@ -84,13 +104,13 @@
         android:layout_below="@id/tabLayout"
         android:background="#F1F5F9" />
 
+    <!-- Content Area -->
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@id/btnStartLayout"
+        android:layout_above="@+id/bottomNav"
         android:layout_below="@id/divider"
-        android:clipToPadding="false"
-        android:fillViewport="true">
+        android:clipToPadding="false">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -98,349 +118,126 @@
             android:orientation="vertical"
             android:padding="20dp">
 
-            <!-- Progress Card -->
-            <com.google.android.material.card.MaterialCardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:cardBackgroundColor="#ECFEFF"
-                app:cardCornerRadius="24dp"
-                app:cardElevation="0dp"
-                app:strokeColor="#CFFAFE"
-                app:strokeWidth="1dp">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="24dp">
-
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Số câu đã hoàn thành"
-                            android:textColor="#64748B"
-                            android:textSize="15sp" />
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_alignParentEnd="true"
-                            android:background="#DCFCE7"
-                            android:paddingHorizontal="8dp"
-                            android:paddingVertical="4dp"
-                            android:text="+15% tuần này"
-                            android:textColor="#16A34A"
-                            android:textSize="12sp"
-                            android:textStyle="bold" />
-                    </RelativeLayout>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:text="150/450"
-                        android:textColor="#0F172A"
-                        android:textSize="36sp"
-                        android:textStyle="bold" />
-
-                    <ProgressBar
-                        style="?android:attr/progressBarStyleHorizontal"
-                        android:layout_width="match_parent"
-                        android:layout_height="10dp"
-                        android:layout_marginTop="20dp"
-                        android:progress="33"
-                        android:progressTint="#22C1E8"
-                        android:progressBackgroundTint="#E2E8F0" />
-                </LinearLayout>
-            </com.google.android.material.card.MaterialCardView>
-
-            <!-- Difficulty Section Title -->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="32dp"
-                android:text="Chọn mức độ khó"
-                android:textColor="#0F172A"
-                android:textSize="18sp"
-                android:textStyle="bold" />
-
-            <!-- Difficulty Options -->
+            <!-- Mode 1: Topic List (VISIBLE by default) -->
             <LinearLayout
+                android:id="@+id/layoutTopicList"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:visibility="visible">
 
-                <!-- Option: Easy (Selected) -->
                 <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/cardEasy"
+                    android:id="@+id/cardTopicLaw"
+                    android:layout_width="match_parent"
+                    android:layout_height="72dp"
+                    android:layout_marginBottom="12dp"
+                    app:cardCornerRadius="16dp"
+                    app:cardElevation="0dp"
+                    app:strokeColor="#E2E8F0"
+                    app:strokeWidth="1dp">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:paddingHorizontal="16dp">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="⚖️" android:textSize="20sp"/>
+                        <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:layout_marginStart="16dp" android:text="Hệ thống luật lệ" android:textColor="#0F172A" android:textStyle="bold" android:textSize="15sp"/>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="›" android:textColor="#CBD5E1" android:textSize="24sp"/>
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cardTopicSign"
+                    android:layout_width="match_parent"
+                    android:layout_height="72dp"
+                    android:layout_marginBottom="12dp"
+                    app:cardCornerRadius="16dp"
+                    app:cardElevation="0dp"
+                    app:strokeColor="#E2E8F0"
+                    app:strokeWidth="1dp">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:paddingHorizontal="16dp">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="🛑" android:textSize="20sp"/>
+                        <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:layout_marginStart="16dp" android:text="Biển báo đường bộ" android:textColor="#0F172A" android:textStyle="bold" android:textSize="15sp"/>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="›" android:textColor="#CBD5E1" android:textSize="24sp"/>
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+            </LinearLayout>
+
+            <!-- Mode 2: Exam List (GONE by default) -->
+            <LinearLayout
+                android:id="@+id/layoutExamList"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cardExamSet1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="12dp"
-                    app:cardCornerRadius="20dp"
+                    app:cardCornerRadius="16dp"
                     app:cardElevation="0dp"
                     app:strokeColor="#22C1E8"
-                    app:strokeWidth="2dp">
-                    <RelativeLayout
+                    app:strokeWidth="1dp">
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:orientation="vertical"
                         android:padding="16dp">
-                        <TextView
-                            android:id="@+id/iconEasy"
-                            android:layout_width="32dp"
-                            android:layout_height="32dp"
-                            android:text="◢"
-                            android:textColor="#22C55E"
-                            android:textSize="24sp" />
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="12dp"
-                            android:layout_toEndOf="@id/iconEasy"
-                            android:orientation="vertical">
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Dễ"
-                                android:textColor="#0F172A"
-                                android:textSize="16sp"
-                                android:textStyle="bold" />
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Phù hợp cho người mới bắt đầu tìm hiểu luật"
-                                android:textColor="#64748B"
-                                android:textSize="13sp" />
-                        </LinearLayout>
-                        <RadioButton
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_alignParentEnd="true"
-                            android:layout_centerVertical="true"
-                            android:checked="true"
-                            android:clickable="false"
-                            android:buttonTint="#22C1E8" />
-                    </RelativeLayout>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="BỘ ĐỀ SỐ 1" android:textColor="#22C1E8" android:textStyle="bold" android:textSize="13sp"/>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4dp" android:text="Thời gian: 20 phút | 40 câu hỏi" android:textColor="#64748B" android:textSize="14sp"/>
+                    </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
 
-                <!-- Option: Medium -->
                 <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/cardMedium"
+                    android:id="@+id/cardExamSet2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="12dp"
-                    app:cardCornerRadius="20dp"
+                    app:cardCornerRadius="16dp"
                     app:cardElevation="0dp"
-                    app:strokeColor="#F1F5F9"
+                    app:strokeColor="#E2E8F0"
                     app:strokeWidth="1dp">
-                    <RelativeLayout
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:orientation="vertical"
                         android:padding="16dp">
-                        <TextView
-                            android:id="@+id/iconMedium"
-                            android:layout_width="32dp"
-                            android:layout_height="32dp"
-                            android:text="◢"
-                            android:textColor="#F59E0B"
-                            android:textSize="24sp" />
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="12dp"
-                            android:layout_toEndOf="@id/iconMedium"
-                            android:orientation="vertical">
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Trung bình"
-                                android:textColor="#0F172A"
-                                android:textSize="16sp"
-                                android:textStyle="bold" />
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Câu hỏi tổng hợp về biển báo và sa hình"
-                                android:textColor="#64748B"
-                                android:textSize="13sp" />
-                        </LinearLayout>
-                        <RadioButton
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_alignParentEnd="true"
-                            android:layout_centerVertical="true"
-                            android:checked="false"
-                            android:clickable="false"
-                            android:buttonTint="#CBD5E1" />
-                    </RelativeLayout>
-                </com.google.android.material.card.MaterialCardView>
-
-                <!-- Option: Hard -->
-                <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/cardHard"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="12dp"
-                    app:cardCornerRadius="20dp"
-                    app:cardElevation="0dp"
-                    app:strokeColor="#F1F5F9"
-                    app:strokeWidth="1dp">
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:padding="16dp">
-                        <TextView
-                            android:id="@+id/iconHard"
-                            android:layout_width="32dp"
-                            android:layout_height="32dp"
-                            android:text="◢"
-                            android:textColor="#EF4444"
-                            android:textSize="24sp" />
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="12dp"
-                            android:layout_toEndOf="@id/iconHard"
-                            android:orientation="vertical">
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Khó"
-                                android:textColor="#0F172A"
-                                android:textSize="16sp"
-                                android:textStyle="bold" />
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Các tình huống phức tạp và lỗi vi phạm ít gặp"
-                                android:textColor="#64748B"
-                                android:textSize="13sp" />
-                        </LinearLayout>
-                        <RadioButton
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_alignParentEnd="true"
-                            android:layout_centerVertical="true"
-                            android:checked="false"
-                            android:clickable="false"
-                            android:buttonTint="#CBD5E1" />
-                    </RelativeLayout>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="BỘ ĐỀ SỐ 2" android:textColor="#0F172A" android:textStyle="bold" android:textSize="13sp"/>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4dp" android:text="Thời gian: 20 phút | 40 câu hỏi" android:textColor="#64748B" android:textSize="14sp"/>
+                    </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
             </LinearLayout>
 
         </LinearLayout>
     </ScrollView>
 
-    <!-- Bottom Action Button -->
-    <LinearLayout
-        android:id="@+id/btnStartLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@id/bottomNav"
-        android:padding="20dp">
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnStartQuiz"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:text="Bắt đầu luyện tập"
-            android:textAllCaps="false"
-            android:textColor="#FFFFFF"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            app:backgroundTint="#22C1E8"
-            app:cornerRadius="30dp"
-            app:icon="@android:drawable/ic_media_play"
-            app:iconGravity="textStart"
-            app:iconPadding="12dp"
-            app:iconTint="#FFFFFF" />
-    </LinearLayout>
-
-    <!-- Bottom Navigation Bar -->
+    <!-- Bottom Nav -->
     <LinearLayout
         android:id="@+id/bottomNav"
         android:layout_width="match_parent"
         android:layout_height="70dp"
         android:layout_alignParentBottom="true"
         android:background="#FFFFFF"
-        android:elevation="16dp"
-        android:orientation="horizontal">
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:orientation="vertical">
-            <ImageView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:src="@android:drawable/ic_menu_today"
-                app:tint="#94A3B8" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Trang chủ"
-                android:textColor="#94A3B8"
-                android:textSize="11sp" />
+        android:elevation="8dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+        <LinearLayout android:id="@+id/navHome" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:gravity="center" android:orientation="vertical" android:clickable="true" android:focusable="true">
+            <ImageView android:layout_width="24dp" android:layout_height="24dp" android:src="@android:drawable/ic_menu_today" app:tint="#94A3B8" />
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Trang chủ" android:textColor="#94A3B8" android:textSize="11sp" />
         </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:orientation="vertical">
-            <ImageView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:src="@android:drawable/ic_menu_edit"
-                app:tint="#22C1E8" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Luyện tập"
-                android:textColor="#22C1E8"
-                android:textSize="11sp" />
+        <LinearLayout android:id="@+id/navQuiz" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:gravity="center" android:orientation="vertical" android:clickable="true" android:focusable="true">
+            <ImageView android:layout_width="24dp" android:layout_height="24dp" android:src="@android:drawable/ic_menu_edit" app:tint="#22C1E8" />
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Luyện tập" android:textColor="#22C1E8" android:textSize="11sp" android:textStyle="bold"/>
         </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:orientation="vertical">
-            <ImageView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:src="@android:drawable/ic_menu_search"
-                app:tint="#94A3B8" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Tra cứu"
-                android:textColor="#94A3B8"
-                android:textSize="11sp" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:orientation="vertical">
-            <ImageView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:src="@android:drawable/ic_menu_myplaces"
-                app:tint="#94A3B8" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Cá nhân"
-                android:textColor="#94A3B8"
-                android:textSize="11sp" />
+        <LinearLayout android:id="@+id/navProfile" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:gravity="center" android:orientation="vertical" android:clickable="true" android:focusable="true">
+            <ImageView android:layout_width="24dp" android:layout_height="24dp" android:src="@android:drawable/ic_menu_myplaces" app:tint="#94A3B8" />
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cá nhân" android:textColor="#94A3B8" android:textSize="11sp" />
         </LinearLayout>
     </LinearLayout>
 

@@ -1,137 +1,374 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F8FAFC"
-    android:orientation="vertical">
+    android:background="#F8FAFC">
 
-    <!-- Header with Back Button -->
+    <!-- Header -->
     <RelativeLayout
+        android:id="@+id/header"
         android:layout_width="match_parent"
         android:layout_height="64dp"
         android:background="#FFFFFF"
-        android:paddingHorizontal="8dp">
+        android:elevation="1dp">
 
         <ImageView
             android:id="@+id/btnBack"
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:layout_centerVertical="true"
+            android:layout_marginStart="8dp"
             android:padding="12dp"
             android:src="@android:drawable/ic_menu_revert"
-            app:tint="#0F172A"
-            android:clickable="true"
-            android:focusable="true" />
+            app:tint="#0F172A" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
+            android:fontFamily="sans-serif-black"
             android:text="Bài học luật"
             android:textColor="#0F172A"
-            android:textSize="20sp"
-            android:textStyle="bold" />
+            android:textSize="20sp" />
     </RelativeLayout>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="#E2E8F0" />
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:fillViewport="true">
+        android:layout_height="match_parent"
+        android:layout_above="@+id/bottomNav"
+        android:layout_below="@id/header"
+        android:clipToPadding="false">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="16dp">
-
-            <!-- Search -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="56dp"
-                android:background="@drawable/bg_input"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
-                android:paddingStart="16dp">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="⌕"
-                    android:textColor="#64748B"
-                    android:textSize="24sp" />
-                <EditText
-                    android:id="@+id/etSearchLesson"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:layout_marginStart="12dp"
-                    android:background="@android:color/transparent"
-                    android:hint="Tìm kiếm bài học..."
-                    android:textColorHint="#64748B"
-                    android:textSize="16sp" />
-            </LinearLayout>
+            android:padding="20dp">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
-                android:text="Danh sách chủ đề"
-                android:textColor="#0F172A"
-                android:textSize="18sp"
-                android:textStyle="bold" />
+                android:fontFamily="sans-serif-medium"
+                android:text="Chọn chương để bắt đầu học"
+                android:textColor="#64748B"
+                android:textSize="14sp"
+                android:layout_marginBottom="16dp" />
 
-            <!-- Item 1 -->
-            <LinearLayout
-                android:id="@+id/itemRule1"
+            <!-- 1. NHỮNG QUY ĐỊNH CHUNG -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/topic1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="18dp"
-                android:background="@drawable/bg_card"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
-                android:padding="16dp">
-
-                <TextView
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
-                    android:background="@drawable/bg_assistant_circle"
-                    android:gravity="center"
-                    android:text="👥"
-                    android:textSize="24sp" />
-
+                android:layout_marginBottom="12dp"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="0dp"
+                app:strokeColor="#E2E8F0"
+                app:strokeWidth="1dp"
+                android:clickable="true"
+                android:focusable="true">
                 <LinearLayout
-                    android:layout_width="0dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
-
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:padding="16dp">
+                    <TextView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:background="@drawable/bg_assistant_circle"
+                        android:backgroundTint="#E0F2FE"
+                        android:gravity="center"
+                        android:text="1"
+                        android:textColor="#0284C7"
+                        android:textStyle="bold" />
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginStart="16dp"
+                        android:fontFamily="sans-serif-bold"
+                        android:text="NHỮNG QUY ĐỊNH CHUNG"
+                        android:textColor="#0F172A"
+                        android:textSize="15sp" />
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Quy tắc nhường đường"
-                        android:textColor="#0F172A"
-                        android:textSize="16sp"
-                        android:textStyle="bold" />
-
-                    <ProgressBar
-                        style="?android:attr/progressBarStyleHorizontal"
-                        android:layout_width="match_parent"
-                        android:layout_height="6dp"
-                        android:layout_marginTop="8dp"
-                        android:progress="45"
-                        android:progressTint="#22C1E8" />
+                        android:text="›"
+                        android:textColor="#CBD5E1"
+                        android:textSize="24sp" />
                 </LinearLayout>
-            </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
 
-            <!-- Thêm các bài học khác tương tự... -->
+            <!-- 2. QUY TẮC GIAO THÔNG ĐƯỜNG BỘ -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/topic2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="0dp"
+                app:strokeColor="#E2E8F0"
+                app:strokeWidth="1dp">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:padding="16dp">
+                    <TextView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:background="@drawable/bg_assistant_circle"
+                        android:backgroundTint="#FEE2E2"
+                        android:gravity="center"
+                        android:text="2"
+                        android:textColor="#DC2626"
+                        android:textStyle="bold" />
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginStart="16dp"
+                        android:fontFamily="sans-serif-bold"
+                        android:text="QUY TẮC GIAO THÔNG ĐƯỜNG BỘ"
+                        android:textColor="#0F172A"
+                        android:textSize="15sp" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="›"
+                        android:textColor="#CBD5E1"
+                        android:textSize="24sp" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- 3. PHƯƠNG TIỆN THAM GIA GIAO THÔNG -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/topic3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="0dp"
+                app:strokeColor="#E2E8F0"
+                app:strokeWidth="1dp">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:padding="16dp">
+                    <TextView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:background="@drawable/bg_assistant_circle"
+                        android:backgroundTint="#DCFCE7"
+                        android:gravity="center"
+                        android:text="3"
+                        android:textColor="#16A34A"
+                        android:textStyle="bold" />
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginStart="16dp"
+                        android:fontFamily="sans-serif-bold"
+                        android:text="PHƯƠNG TIỆN THAM GIA GIAO THÔNG"
+                        android:textColor="#0F172A"
+                        android:textSize="15sp" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="›"
+                        android:textColor="#CBD5E1"
+                        android:textSize="24sp" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- 4. NGƯỜI ĐIỀU KHIỂN PHƯƠNG TIỆN -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/topic4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="0dp"
+                app:strokeColor="#E2E8F0"
+                app:strokeWidth="1dp">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:padding="16dp">
+                    <TextView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:background="@drawable/bg_assistant_circle"
+                        android:backgroundTint="#FEF3C7"
+                        android:gravity="center"
+                        android:text="4"
+                        android:textColor="#D97706"
+                        android:textStyle="bold" />
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginStart="16dp"
+                        android:fontFamily="sans-serif-bold"
+                        android:text="NGƯỜI ĐIỀU KHIỂN PHƯƠNG TIỆN"
+                        android:textColor="#0F172A"
+                        android:textSize="15sp" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="›"
+                        android:textColor="#CBD5E1"
+                        android:textSize="24sp" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- 5. TUẦN TRA, KIỂM SOÁT -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/topic5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="0dp"
+                app:strokeColor="#E2E8F0"
+                app:strokeWidth="1dp">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:padding="16dp">
+                    <TextView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:background="@drawable/bg_assistant_circle"
+                        android:backgroundTint="#F3E8FF"
+                        android:gravity="center"
+                        android:text="5"
+                        android:textColor="#9333EA"
+                        android:textStyle="bold" />
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginStart="16dp"
+                        android:fontFamily="sans-serif-bold"
+                        android:text="TUẦN TRA, KIỂM SOÁT"
+                        android:textColor="#0F172A"
+                        android:textSize="15sp" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="›"
+                        android:textColor="#CBD5E1"
+                        android:textSize="24sp" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- 6. BẢO ĐẢM TRẬT TỰ, AN TOÀN -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/topic6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="0dp"
+                app:strokeColor="#E2E8F0"
+                app:strokeWidth="1dp">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:padding="16dp">
+                    <TextView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:background="@drawable/bg_assistant_circle"
+                        android:backgroundTint="#FFEDD5"
+                        android:gravity="center"
+                        android:text="6"
+                        android:textColor="#EA580C"
+                        android:textStyle="bold" />
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginStart="16dp"
+                        android:fontFamily="sans-serif-bold"
+                        android:text="BẢO ĐẢM TRẬT TỰ, AN TOÀN"
+                        android:textColor="#0F172A"
+                        android:textSize="15sp" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="›"
+                        android:textColor="#CBD5E1"
+                        android:textSize="24sp" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- 7. GIẢI QUYẾT TAI NẠN -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/topic7"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="24dp"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="0dp"
+                app:strokeColor="#E2E8F0"
+                app:strokeWidth="1dp">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:padding="16dp">
+                    <TextView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:background="@drawable/bg_assistant_circle"
+                        android:backgroundTint="#FCE7F3"
+                        android:gravity="center"
+                        android:text="7"
+                        android:textColor="#DB2777"
+                        android:textStyle="bold" />
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginStart="16dp"
+                        android:fontFamily="sans-serif-bold"
+                        android:text="GIẢI QUYẾT TAI NẠN GIAO THÔNG"
+                        android:textColor="#0F172A"
+                        android:textSize="15sp" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="›"
+                        android:textColor="#CBD5E1"
+                        android:textSize="24sp" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
 
         </LinearLayout>
     </ScrollView>
-</LinearLayout>
+
+    <!-- Bottom Navigation Bar Placeholder -->
+    <LinearLayout
+        android:id="@+id/bottomNav"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_alignParentBottom="true"
+        android:background="#FFFFFF"
+        android:elevation="8dp"
+        android:orientation="horizontal" />
+
+</RelativeLayout>

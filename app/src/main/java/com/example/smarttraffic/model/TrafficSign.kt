@@ -5,6 +5,6 @@ data class TrafficSign(
     val code: String,
     val name: String,
     val description: String,
-    val category: String,
+    val group: String,
     val imageResId: Int
 )

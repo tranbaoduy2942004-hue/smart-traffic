@@ -3,37 +3,40 @@ package com.example.smarttraffic.ui.lesson
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
 import com.example.smarttraffic.R
 import com.example.smarttraffic.ui.home.HomeActivity
 import com.example.smarttraffic.ui.profile.ProfileActivity
 import com.example.smarttraffic.ui.quiz.QuizPracticeActivity
-import com.example.smarttraffic.ui.search.SearchActivity
 
 class LessonActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_lesson)
 
-        // 1. Xử lý nút Back
+        // 1. Nút Back
         findViewById<View>(R.id.btnBack)?.setOnClickListener {
             finish()
         }
 
-        // 2. Click vào bài học (Ví dụ bài 1)
-        findViewById<LinearLayout>(R.id.itemRule1)?.setOnClickListener {
-            startActivity(Intent(this, LessonDetailActivity::class.java))
+        // 2. Click vào các chủ đề bài học
+        val topics = listOf(
+            R.id.topic1, R.id.topic2, R.id.topic3, R.id.topic4, 
+            R.id.topic5, R.id.topic6, R.id.topic7
+        )
+
+        topics.forEachIndexed { index, id ->
+            findViewById<View>(id)?.setOnClickListener {
+                startLesson(index + 1)
+            }
         }
 
-        // 3. Bottom Navigation Bar
+        // 3. Bottom Navigation
         findViewById<View>(R.id.navHome)?.setOnClickListener {
-            startActivity(Intent(this, HomeActivity::class.java))
+            val intent = Intent(this, HomeActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+            startActivity(intent)
             finish()
-        }
-
-        findViewById<View>(R.id.navStudy)?.setOnClickListener {
-            // Đang ở trang bài học rồi
         }
 
         findViewById<View>(R.id.navQuiz)?.setOnClickListener {
@@ -43,5 +46,11 @@ class LessonActivity : AppCompatActivity() {
         findViewById<View>(R.id.navProfile)?.setOnClickListener {
             startActivity(Intent(this, ProfileActivity::class.java))
         }
+    }
+
+    private fun startLesson(topicId: Int) {
+        val intent = Intent(this, LessonDetailActivity::class.java)
+        intent.putExtra("topic_id", topicId)
+        startActivity(intent)
     }
 }

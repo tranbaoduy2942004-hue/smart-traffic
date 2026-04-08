@@ -31,6 +31,7 @@
         <activity android:name=".ui.lesson.LessonActivity"/>
         <activity android:name=".ui.lesson.LessonDetailActivity"/>
         <activity android:name=".ui.sign.SignListActivity"/>
+        <activity android:name=".ui.sign.SignCategoryActivity"/>
         <activity android:name=".ui.sign.SignDetailActivity"/>
         <activity android:name=".ui.quiz.SignQuizActivity"/>
         <activity android:name=".ui.simulation.SimulationListActivity"/>

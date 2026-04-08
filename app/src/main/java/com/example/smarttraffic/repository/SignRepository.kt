@@ -5,8 +5,8 @@ import com.example.smarttraffic.model.TrafficSign
 
 class SignRepository {
 
-    fun getAllSigns(): List<TrafficSign> {
-        return FakeSignDataSource.getAllSigns()
+    fun getSignsByGroup(group: String): List<TrafficSign> {
+        return FakeSignDataSource.getSignsByGroup(group)
     }
 
     fun getSignById(id: Int): TrafficSign? {

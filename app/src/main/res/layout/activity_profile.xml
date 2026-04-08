@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:background="#FFFFFF">
 
-    <!-- Header -->
+    <!-- 1. Header cố định -->
     <RelativeLayout
         android:id="@+id/header"
         android:layout_width="match_parent"
@@ -24,7 +24,8 @@
             app:tint="#0F172A"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:clickable="true"
-            android:focusable="true" />
+            android:focusable="true"
+            android:contentDescription="Quay lại" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -36,25 +37,135 @@
             android:textSize="20sp" />
     </RelativeLayout>
 
+    <!-- 2. Bottom Nav (Định nghĩa trước để ScrollView nhận diện ID) -->
+    <LinearLayout
+        android:id="@+id/bottomNav"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_alignParentBottom="true"
+        android:background="#FFFFFF"
+        android:elevation="8dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:baselineAligned="false">
+
+        <LinearLayout
+            android:id="@+id/navHome"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:clickable="true"
+            android:focusable="true"
+            android:contentDescription="Trang chủ">
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@android:drawable/ic_menu_today"
+                app:tint="#94A3B8"
+                android:contentDescription="icon" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="Trang chủ"
+                android:textColor="#94A3B8"
+                android:textSize="11sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/navStudy"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:clickable="true"
+            android:focusable="true"
+            android:contentDescription="Học tập">
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@android:drawable/ic_menu_agenda"
+                app:tint="#94A3B8"
+                android:contentDescription="icon" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="Học tập"
+                android:textColor="#94A3B8"
+                android:textSize="11sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/navQuiz"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:clickable="true"
+            android:focusable="true"
+            android:contentDescription="Thi thử">
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@android:drawable/ic_menu_edit"
+                app:tint="#94A3B8"
+                android:contentDescription="icon" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="Thi thử"
+                android:textColor="#94A3B8"
+                android:textSize="11sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/navProfile"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:clickable="true"
+            android:focusable="true"
+            android:contentDescription="Hồ sơ">
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@android:drawable/ic_menu_myplaces"
+                app:tint="#22C1E8"
+                android:contentDescription="icon" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:fontFamily="sans-serif-bold"
+                android:text="Hồ sơ"
+                android:textColor="#22C1E8"
+                android:textSize="11sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- 3. Nội dung cuộn ở giữa -->
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@+id/bottomNav"
+        android:layout_above="@id/bottomNav"
         android:layout_below="@id/header"
-        android:clipToPadding="false"
         android:fillViewport="true">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:paddingBottom="20dp">
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="#F1F5F9" />
-
-            <!-- AVATAR SECTION -->
+            <!-- Avatar Section -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -73,7 +184,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:scaleType="centerCrop"
-                        android:src="@android:color/darker_gray" />
+                        android:src="@android:color/darker_gray"
+                        android:contentDescription="Avatar" />
                 </com.google.android.material.card.MaterialCardView>
 
                 <TextView
@@ -98,7 +210,7 @@
                     android:textStyle="bold" />
             </LinearLayout>
 
-            <!-- MENU ITEMS -->
+            <!-- Menu list -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -113,25 +225,17 @@
                     app:cardCornerRadius="16dp"
                     app:cardElevation="0dp"
                     app:strokeColor="#F1F5F9"
-                    app:strokeWidth="1dp">
+                    app:strokeWidth="1dp"
+                    android:clickable="true"
+                    android:focusable="true">
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:gravity="center_vertical"
                         android:orientation="horizontal"
                         android:paddingHorizontal="16dp">
-                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="📊" android:textSize="20sp" />
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="16dp"
-                            android:layout_weight="1"
-                            android:fontFamily="sans-serif-medium"
-                            android:text="Tiến độ học tập"
-                            android:textColor="#334155"
-                            android:textSize="15sp" />
-
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="📊" android:textSize="20sp" android:contentDescription="icon" />
+                        <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_marginStart="16dp" android:layout_weight="1" android:text="Tiến độ học tập" android:textColor="#334155" android:textSize="15sp" />
                         <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="›" android:textColor="#94A3B8" android:textSize="24sp" />
                     </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
@@ -144,15 +248,17 @@
                     app:cardCornerRadius="16dp"
                     app:cardElevation="0dp"
                     app:strokeColor="#F1F5F9"
-                    app:strokeWidth="1dp">
+                    app:strokeWidth="1dp"
+                    android:clickable="true"
+                    android:focusable="true">
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:gravity="center_vertical"
                         android:orientation="horizontal"
                         android:paddingHorizontal="16dp">
-                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="❤️" android:textSize="20sp" />
-                        <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_marginStart="16dp" android:layout_weight="1" android:fontFamily="sans-serif-medium" android:text="Yêu thích" android:textColor="#334155" android:textSize="15sp" />
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="❤️" android:textSize="20sp" android:contentDescription="icon" />
+                        <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_marginStart="16dp" android:layout_weight="1" android:text="Yêu thích" android:textColor="#334155" android:textSize="15sp" />
                         <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="›" android:textColor="#94A3B8" android:textSize="24sp" />
                     </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
@@ -165,15 +271,17 @@
                     app:cardCornerRadius="16dp"
                     app:cardElevation="0dp"
                     app:strokeColor="#F1F5F9"
-                    app:strokeWidth="1dp">
+                    app:strokeWidth="1dp"
+                    android:clickable="true"
+                    android:focusable="true">
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:gravity="center_vertical"
                         android:orientation="horizontal"
                         android:paddingHorizontal="16dp">
-                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="⚙️" android:textSize="20sp" />
-                        <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_marginStart="16dp" android:layout_weight="1" android:fontFamily="sans-serif-medium" android:text="Cài đặt" android:textColor="#334155" android:textSize="15sp" />
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="⚙️" android:textSize="20sp" android:contentDescription="icon" />
+                        <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_marginStart="16dp" android:layout_weight="1" android:text="Cài đặt" android:textColor="#334155" android:textSize="15sp" />
                         <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="›" android:textColor="#94A3B8" android:textSize="24sp" />
                     </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
@@ -182,143 +290,27 @@
                     android:id="@+id/itemLogout"
                     android:layout_width="match_parent"
                     android:layout_height="64dp"
-                    android:layout_marginTop="24dp"
-                    android:layout_marginBottom="32dp"
+                    android:layout_marginTop="20dp"
                     app:cardCornerRadius="16dp"
                     app:cardElevation="0dp"
                     app:strokeColor="#FEE2E2"
-                    app:strokeWidth="1dp">
+                    app:strokeWidth="1dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:layout_marginBottom="32dp">
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:gravity="center_vertical"
                         android:orientation="horizontal"
                         android:paddingHorizontal="16dp">
-                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="🚪" android:textSize="20sp" />
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="16dp"
-                            android:layout_weight="1"
-                            android:fontFamily="sans-serif-bold"
-                            android:text="Đăng xuất"
-                            android:textColor="#EF4444"
-                            android:textSize="15sp" />
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="🚪" android:textSize="20sp" android:contentDescription="icon" />
+                        <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_marginStart="16dp" android:layout_weight="1" android:text="Đăng xuất" android:textColor="#EF4444" android:textSize="15sp" android:textStyle="bold" />
                     </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
 
             </LinearLayout>
         </LinearLayout>
     </ScrollView>
-
-    <!-- Bottom Navigation Bar - Exactly like your image -->
-    <LinearLayout
-        android:id="@+id/bottomNav"
-        android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:layout_alignParentBottom="true"
-        android:background="#FFFFFF"
-        android:elevation="8dp"
-        android:orientation="horizontal"
-        android:gravity="center_vertical"
-        android:paddingTop="4dp">
-
-        <LinearLayout
-            android:id="@+id/navHome"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:orientation="vertical"
-            android:clickable="true"
-            android:focusable="true">
-            <ImageView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:src="@android:drawable/ic_menu_today"
-                app:tint="#94A3B8" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:fontFamily="sans-serif-medium"
-                android:text="Trang chủ"
-                android:textColor="#94A3B8"
-                android:textSize="11sp" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/navStudy"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:orientation="vertical"
-            android:clickable="true"
-            android:focusable="true">
-            <ImageView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:src="@android:drawable/ic_menu_agenda"
-                app:tint="#94A3B8" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:fontFamily="sans-serif-medium"
-                android:text="Học tập"
-                android:textColor="#94A3B8"
-                android:textSize="11sp" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/navQuiz"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:orientation="vertical"
-            android:clickable="true"
-            android:focusable="true">
-            <ImageView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:src="@android:drawable/ic_menu_edit"
-                app:tint="#94A3B8" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:fontFamily="sans-serif-medium"
-                android:text="Thi thử"
-                android:textColor="#94A3B8"
-                android:textSize="11sp" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/navProfile"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:orientation="vertical"
-            android:clickable="true"
-            android:focusable="true">
-            <ImageView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:src="@android:drawable/ic_menu_myplaces"
-                app:tint="#22C1E8" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:fontFamily="sans-serif-bold"
-                android:text="Hồ sơ"
-                android:textColor="#22C1E8"
-                android:textSize="11sp" />
-        </LinearLayout>
-    </LinearLayout>
 
 </RelativeLayout>
