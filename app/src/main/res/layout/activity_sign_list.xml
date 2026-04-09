@@ -51,278 +51,234 @@
             android:orientation="vertical"
             android:padding="20dp">
 
-            <!-- Search Bar -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-medium"
+                android:text="Danh sách nhóm biển báo"
+                android:textColor="#64748B"
+                android:textSize="14sp"
+                android:layout_marginBottom="20dp" />
+
+            <!-- 1. Nhóm Biển Báo Cấm -->
             <com.google.android.material.card.MaterialCardView
+                android:id="@+id/groupProhibition"
                 android:layout_width="match_parent"
-                android:layout_height="52dp"
-                app:cardBackgroundColor="#FFFFFF"
-                app:cardCornerRadius="26dp"
-                app:cardElevation="2dp"
-                app:strokeWidth="0dp">
+                android:layout_height="80dp"
+                android:layout_marginBottom="12dp"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="0dp"
+                app:strokeColor="#22C1E8"
+                app:strokeWidth="1.5dp"
+                android:clickable="true"
+                android:focusable="true">
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center_vertical"
                     android:orientation="horizontal"
                     android:paddingHorizontal="16dp">
-                    <ImageView
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
-                        android:contentDescription="Tìm kiếm"
-                        android:src="@android:drawable/ic_menu_search"
-                        app:tint="#94A3B8" />
-                    <EditText
-                        android:id="@+id/edtSearchSign"
+                    <TextView
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:background="@drawable/bg_assistant_circle"
+                        android:backgroundTint="#FEE2E2"
+                        android:gravity="center"
+                        android:text="🚫"
+                        android:textSize="20sp" />
+                    <TextView
                         android:layout_width="0dp"
-                        android:layout_height="match_parent"
+                        android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:background="@android:color/transparent"
-                        android:fontFamily="sans-serif"
-                        android:hint="Tìm kiếm biển báo..."
-                        android:paddingHorizontal="12dp"
+                        android:layout_marginStart="16dp"
+                        android:fontFamily="sans-serif-bold"
+                        android:text="1. Nhóm Biển Báo Cấm"
                         android:textColor="#0F172A"
-                        android:textSize="15sp"
-                        android:inputType="text" />
+                        android:textSize="16sp" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="›"
+                        android:textColor="#CBD5E1"
+                        android:textSize="24sp" />
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="32dp"
-                android:fontFamily="sans-serif-black"
-                android:text="Danh mục nhóm biển báo"
-                android:textColor="#64748B"
-                android:textSize="14sp"
-                android:letterSpacing="0.1" />
-
-            <!-- Group Buttons -->
-            <LinearLayout
+            <!-- 2. Nhóm Biển Nguy Hiểm -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/groupDanger"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:orientation="vertical">
-
-                <!-- 1. Biển báo cấm -->
-                <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/groupProhibition"
+                android:layout_height="80dp"
+                android:layout_marginBottom="12dp"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="0dp"
+                app:strokeColor="#22C1E8"
+                app:strokeWidth="1.5dp"
+                android:clickable="true"
+                android:focusable="true">
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="80dp"
-                    android:layout_marginBottom="12dp"
-                    app:cardCornerRadius="16dp"
-                    app:cardElevation="0dp"
-                    app:strokeColor="#22C1E8"
-                    app:strokeWidth="1.5dp"
-                    android:clickable="true"
-                    android:focusable="true">
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:gravity="center_vertical"
-                        android:orientation="horizontal"
-                        android:paddingHorizontal="16dp">
-                        <TextView
-                            android:layout_width="48dp"
-                            android:layout_height="48dp"
-                            android:background="@drawable/bg_assistant_circle"
-                            android:backgroundTint="#FEE2E2"
-                            android:gravity="center"
-                            android:text="🚫"
-                            android:textSize="20sp" />
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:layout_marginStart="16dp"
-                            android:fontFamily="sans-serif-bold"
-                            android:text="1. Nhóm Biển Báo Cấm"
-                            android:textColor="#0F172A"
-                            android:textSize="16sp" />
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="›"
-                            android:textColor="#CBD5E1"
-                            android:textSize="24sp" />
-                    </LinearLayout>
-                </com.google.android.material.card.MaterialCardView>
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingHorizontal="16dp">
+                    <TextView
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:background="@drawable/bg_assistant_circle"
+                        android:backgroundTint="#FEF3C7"
+                        android:gravity="center"
+                        android:text="⚠️"
+                        android:textSize="20sp" />
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginStart="16dp"
+                        android:fontFamily="sans-serif-bold"
+                        android:text="2. Nhóm Biển Nguy Hiểm"
+                        android:textColor="#0F172A"
+                        android:textSize="16sp" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="›"
+                        android:textColor="#CBD5E1"
+                        android:textSize="24sp" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
 
-                <!-- 2. Biển báo nguy hiểm -->
-                <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/groupDanger"
+            <!-- 3. Nhóm Biển Hiệu Lệnh -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/groupMandatory"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:layout_marginBottom="12dp"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="0dp"
+                app:strokeColor="#22C1E8"
+                app:strokeWidth="1.5dp"
+                android:clickable="true"
+                android:focusable="true">
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="80dp"
-                    android:layout_marginBottom="12dp"
-                    app:cardCornerRadius="16dp"
-                    app:cardElevation="0dp"
-                    app:strokeColor="#22C1E8"
-                    app:strokeWidth="1.5dp"
-                    android:clickable="true"
-                    android:focusable="true">
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:gravity="center_vertical"
-                        android:orientation="horizontal"
-                        android:paddingHorizontal="16dp">
-                        <TextView
-                            android:layout_width="48dp"
-                            android:layout_height="48dp"
-                            android:background="@drawable/bg_assistant_circle"
-                            android:backgroundTint="#FEF3C7"
-                            android:gravity="center"
-                            android:text="⚠️"
-                            android:textSize="20sp" />
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:layout_marginStart="16dp"
-                            android:fontFamily="sans-serif-bold"
-                            android:text="2. Nhóm Biển Nguy Hiểm"
-                            android:textColor="#0F172A"
-                            android:textSize="16sp" />
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="›"
-                            android:textColor="#CBD5E1"
-                            android:textSize="24sp" />
-                    </LinearLayout>
-                </com.google.android.material.card.MaterialCardView>
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingHorizontal="16dp">
+                    <TextView
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:background="@drawable/bg_assistant_circle"
+                        android:backgroundTint="#DBEAFE"
+                        android:gravity="center"
+                        android:text="⬆️"
+                        android:textSize="20sp" />
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginStart="16dp"
+                        android:fontFamily="sans-serif-bold"
+                        android:text="3. Nhóm Biển Hiệu Lệnh"
+                        android:textColor="#0F172A"
+                        android:textSize="16sp" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="›"
+                        android:textColor="#CBD5E1"
+                        android:textSize="24sp" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
 
-                <!-- 3. Biển hiệu lệnh -->
-                <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/groupMandatory"
+            <!-- 4. Nhóm Biển Chỉ Dẫn -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/groupInformation"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:layout_marginBottom="12dp"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="0dp"
+                app:strokeColor="#22C1E8"
+                app:strokeWidth="1.5dp"
+                android:clickable="true"
+                android:focusable="true">
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="80dp"
-                    android:layout_marginBottom="12dp"
-                    app:cardCornerRadius="16dp"
-                    app:cardElevation="0dp"
-                    app:strokeColor="#22C1E8"
-                    app:strokeWidth="1.5dp"
-                    android:clickable="true"
-                    android:focusable="true">
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:gravity="center_vertical"
-                        android:orientation="horizontal"
-                        android:paddingHorizontal="16dp">
-                        <TextView
-                            android:layout_width="48dp"
-                            android:layout_height="48dp"
-                            android:background="@drawable/bg_assistant_circle"
-                            android:backgroundTint="#DBEAFE"
-                            android:gravity="center"
-                            android:text="⬆️"
-                            android:textSize="20sp" />
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:layout_marginStart="16dp"
-                            android:fontFamily="sans-serif-bold"
-                            android:text="3. Nhóm Biển Hiệu Lệnh"
-                            android:textColor="#0F172A"
-                            android:textSize="16sp" />
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="›"
-                            android:textColor="#CBD5E1"
-                            android:textSize="24sp" />
-                    </LinearLayout>
-                </com.google.android.material.card.MaterialCardView>
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingHorizontal="16dp">
+                    <TextView
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:background="@drawable/bg_assistant_circle"
+                        android:backgroundTint="#E0F2FE"
+                        android:gravity="center"
+                        android:text="ℹ️"
+                        android:textSize="20sp" />
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginStart="16dp"
+                        android:fontFamily="sans-serif-bold"
+                        android:text="4. Nhóm Biển Chỉ Dẫn"
+                        android:textColor="#0F172A"
+                        android:textSize="16sp" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="›"
+                        android:textColor="#CBD5E1"
+                        android:textSize="24sp" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
 
-                <!-- 4. Biển chỉ dẫn -->
-                <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/groupInformation"
+            <!-- 5. Nhóm Biển Phụ -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/groupAdditional"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:layout_marginBottom="32dp"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="0dp"
+                app:strokeColor="#22C1E8"
+                app:strokeWidth="1.5dp"
+                android:clickable="true"
+                android:focusable="true">
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="80dp"
-                    android:layout_marginBottom="12dp"
-                    app:cardCornerRadius="16dp"
-                    app:cardElevation="0dp"
-                    app:strokeColor="#22C1E8"
-                    app:strokeWidth="1.5dp"
-                    android:clickable="true"
-                    android:focusable="true">
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:gravity="center_vertical"
-                        android:orientation="horizontal"
-                        android:paddingHorizontal="16dp">
-                        <TextView
-                            android:layout_width="48dp"
-                            android:layout_height="48dp"
-                            android:background="@drawable/bg_assistant_circle"
-                            android:backgroundTint="#E0F2FE"
-                            android:gravity="center"
-                            android:text="ℹ️"
-                            android:textSize="20sp" />
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:layout_marginStart="16dp"
-                            android:fontFamily="sans-serif-bold"
-                            android:text="4. Nhóm Biển Chỉ Dẫn"
-                            android:textColor="#0F172A"
-                            android:textSize="16sp" />
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="›"
-                            android:textColor="#CBD5E1"
-                            android:textSize="24sp" />
-                    </LinearLayout>
-                </com.google.android.material.card.MaterialCardView>
-
-                <!-- 5. Biển phụ -->
-                <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/groupAdditional"
-                    android:layout_width="match_parent"
-                    android:layout_height="80dp"
-                    android:layout_marginBottom="32dp"
-                    app:cardCornerRadius="16dp"
-                    app:cardElevation="0dp"
-                    app:strokeColor="#22C1E8"
-                    app:strokeWidth="1.5dp"
-                    android:clickable="true"
-                    android:focusable="true">
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:gravity="center_vertical"
-                        android:orientation="horizontal"
-                        android:paddingHorizontal="16dp">
-                        <TextView
-                            android:layout_width="48dp"
-                            android:layout_height="48dp"
-                            android:background="@drawable/bg_assistant_circle"
-                            android:backgroundTint="#F1F5F9"
-                            android:gravity="center"
-                            android:text="📋"
-                            android:textSize="20sp" />
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:layout_marginStart="16dp"
-                            android:fontFamily="sans-serif-bold"
-                            android:text="5. Nhóm Biển Phụ"
-                            android:textColor="#0F172A"
-                            android:textSize="16sp" />
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="›"
-                            android:textColor="#CBD5E1"
-                            android:textSize="24sp" />
-                    </LinearLayout>
-                </com.google.android.material.card.MaterialCardView>
-            </LinearLayout>
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingHorizontal="16dp">
+                    <TextView
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:background="@drawable/bg_assistant_circle"
+                        android:backgroundTint="#F1F5F9"
+                        android:gravity="center"
+                        android:text="📋"
+                        android:textSize="20sp" />
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginStart="16dp"
+                        android:fontFamily="sans-serif-bold"
+                        android:text="5. Nhóm Biển Phụ"
+                        android:textColor="#0F172A"
+                        android:textSize="16sp" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="›"
+                        android:textColor="#CBD5E1"
+                        android:textSize="24sp" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
         </LinearLayout>
     </ScrollView>
 
@@ -334,8 +290,8 @@
         android:layout_alignParentBottom="true"
         android:background="#FFFFFF"
         android:elevation="8dp"
-        android:orientation="horizontal"
-        android:gravity="center_vertical">
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
 
         <LinearLayout
             android:id="@+id/navHome"

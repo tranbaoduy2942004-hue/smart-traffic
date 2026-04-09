@@ -1,91 +1,151 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="#F8FAFC"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#F8FAFC">
 
-    <LinearLayout
-        android:orientation="vertical"
-        android:padding="16dp"
+    <!-- Header -->
+    <RelativeLayout
+        android:id="@+id/header"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
+        android:layout_height="64dp"
+        android:background="#FFFFFF"
+        android:elevation="1dp">
+        <ImageView
+            android:id="@+id/btnBack"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="8dp"
+            android:padding="12dp"
+            android:src="@android:drawable/ic_menu_revert"
+            app:tint="#0F172A"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:clickable="true"
+            android:focusable="true"
+            android:contentDescription="Quay lại" />
         <TextView
+            android:id="@+id/tvQuestionIndex"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Tiến độ 3/10"
-            android:textStyle="bold"
-            android:textColor="#0F172A" />
-
-        <ProgressBar
-            style="?android:attr/progressBarStyleHorizontal"
-            android:layout_width="match_parent"
-            android:layout_height="8dp"
-            android:progress="30"
-            android:layout_marginTop="8dp" />
-
-        <ImageView
-            android:layout_width="200dp"
-            android:layout_height="200dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="24dp"
-            android:src="@android:color/darker_gray" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Biển báo này có ý nghĩa gì?"
-            android:textSize="22sp"
-            android:textStyle="bold"
+            android:layout_centerInParent="true"
+            android:fontFamily="sans-serif-black"
+            android:text="Câu 1/40"
             android:textColor="#0F172A"
-            android:gravity="center"
-            android:layout_marginTop="20dp" />
+            android:textSize="18sp" />
+    </RelativeLayout>
 
-        <RadioGroup
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/bottomArea"
+        android:layout_below="@id/header"
+        android:clipToPadding="false"
+        android:fillViewport="true">
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp">
+            android:orientation="vertical"
+            android:padding="20dp">
 
-            <RadioButton
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardImage"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="0dp"
+                android:visibility="gone">
+                <ImageView
+                    android:id="@+id/imgQuestion"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerInside"
+                    android:contentDescription="Hình ảnh câu hỏi" />
+            </com.google.android.material.card.MaterialCardView>
+
+            <TextView
+                android:id="@+id/tvQuestion"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="A. Đường trơn"
-                android:textSize="16sp" />
+                android:layout_marginTop="20dp"
+                android:fontFamily="sans-serif-bold"
+                android:lineSpacingExtra="4dp"
+                android:text="Nội dung câu hỏi sẽ hiển thị ở đây?"
+                android:textColor="#0F172A"
+                android:textSize="20sp" />
 
-            <RadioButton
+            <RadioGroup
+                android:id="@+id/radioGroup"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="B. Nguy hiểm khác"
-                android:textSize="16sp"
-                android:layout_marginTop="10dp" />
+                android:layout_marginTop="24dp">
 
-            <RadioButton
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="C. Công trường"
-                android:textSize="16sp"
-                android:layout_marginTop="10dp" />
+                <RadioButton
+                    android:id="@+id/btnOptionA"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="12dp"
+                    android:background="@drawable/bg_card"
+                    android:padding="16dp"
+                    android:button="@null"
+                    android:text="Đáp án A"
+                    android:textSize="16sp" />
 
-            <RadioButton
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="D. Chú ý xe đỗ"
-                android:textSize="16sp"
-                android:layout_marginTop="10dp" />
-        </RadioGroup>
+                <RadioButton
+                    android:id="@+id/btnOptionB"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="12dp"
+                    android:background="@drawable/bg_card"
+                    android:padding="16dp"
+                    android:button="@null"
+                    android:text="Đáp án B"
+                    android:textSize="16sp" />
 
+                <RadioButton
+                    android:id="@+id/btnOptionC"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="12dp"
+                    android:background="@drawable/bg_card"
+                    android:padding="16dp"
+                    android:button="@null"
+                    android:text="Đáp án C"
+                    android:textSize="16sp" />
+
+                <RadioButton
+                    android:id="@+id/btnOptionD"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_card"
+                    android:padding="16dp"
+                    android:button="@null"
+                    android:text="Đáp án D"
+                    android:textSize="16sp" />
+            </RadioGroup>
+        </LinearLayout>
+    </ScrollView>
+
+    <LinearLayout
+        android:id="@+id/bottomArea"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="#FFFFFF"
+        android:padding="20dp"
+        android:elevation="8dp">
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnConfirm"
             android:layout_width="match_parent"
-            android:layout_height="58dp"
-            android:layout_marginTop="24dp"
-            android:text="Xác nhận"
+            android:layout_height="60dp"
+            android:text="Kiểm tra đáp án"
             android:textAllCaps="false"
-            android:textColor="#FFFFFF"
             android:textSize="18sp"
             android:textStyle="bold"
-            app:backgroundTint="#22C1E8"
-            app:cornerRadius="29dp" />
+            app:cornerRadius="30dp"
+            app:backgroundTint="#22C1E8" />
     </LinearLayout>
-</ScrollView>
+
+</RelativeLayout>

@@ -1,8 +1,7 @@
 package com.example.smarttraffic.ui.progress
 
 import android.os.Bundle
-import android.widget.TextView
-import android.widget.Toast
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.example.smarttraffic.R
 
@@ -12,15 +11,9 @@ class ProgressActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_progress)
 
-        val btnAdvice = findViewById<TextView>(R.id.btnAdvice)
-        val btnViewRanking = findViewById<TextView>(R.id.btnViewRanking)
-
-        btnAdvice.setOnClickListener {
-            Toast.makeText(this, "Đi ôn tập ngay", Toast.LENGTH_SHORT).show()
-        }
-
-        btnViewRanking.setOnClickListener {
-            Toast.makeText(this, "Mở bảng xếp hạng", Toast.LENGTH_SHORT).show()
+        // Sửa lỗi nút Back và các tham chiếu ID đã bị xóa trong XML
+        findViewById<View>(R.id.btnBack)?.setOnClickListener {
+            finish()
         }
     }
 }
